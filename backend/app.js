@@ -1,0 +1,10 @@
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const planetRoutes = require('./routes/planetRoutes');
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/api/planets', planetRoutes);
+const PORT = 3000;
+app.listen(PORT, () => console.log(`🌍 Server działa: http://localhost:${PORT}`));

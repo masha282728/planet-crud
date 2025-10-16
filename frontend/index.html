@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Planet CRUD</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Planet CRUD</h1>
+<form id="planetForm">
+  <input type="hidden" id="planetId">
+  <input type="text" id="name" placeholder="Name" required>
+  <input type="text" id="system" placeholder="System" required>
+  <input type="text" id="climate" placeholder="Climate" required>
+  <input type="number" id="population" placeholder="Population" required>
+  <button type="submit">Save</button>
+</form>
+<table border="1" id="planetTable">
+  <thead><tr><th>ID</th><th>Name</th><th>System</th><th>Climate</th><th>Population</th><th>Actions</th></tr></thead>
+  <tbody></tbody>
+</table>
+<script src="script.js"></script>
+</body>
+</html>

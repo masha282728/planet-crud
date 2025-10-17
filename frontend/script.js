@@ -1,91 +1,57 @@
-const api = 'http://localhost:3000/api/planets';
-const form = document.getElementById('planetForm');
-const table = document.querySelector('#planetTable tbody');
-const message = document.getElementById('message'); // элемент для уведомлений
+const form = document.getElementById("planetForm");
+const list = document.getElementById("planetList");
+let editId = null;
 
-function showMessage(text) {
-  message.textContent = text;
-  setTimeout(() => { message.textContent = ''; }, 3000);
+async function fetchPlanets() {
+  const res = await fetch("/api/planet");
+  const planets = await res.json();
+  list.innerHTML = "";
+  planets.forEach(p => {
+    const li = document.createElement("li");
+    li.textContent = `${p.name} | ${p.system} | ${p.climate} | ${p.population} | ${p.surfaceType}`;
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.onclick = () => fillForm(p);
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+    delBtn.onclick = () => deletePlanet(p.id);
+    li.appendChild(editBtn);
+    li.appendChild(delBtn);
+    list.appendChild(li);
+  });
 }
 
-form.addEventListener('submit', async e => {
+function fillForm(p) {
+  form.name.value = p.name;
+  form.system.value = p.system;
+  form.climate.value = p.climate;
+  form.population.value = p.population;
+  form.surfaceType.value = p.surfaceType;
+  editId = p.id;
+}
+
+form.onsubmit = async e => {
   e.preventDefault();
-
-  const id = document.getElementById('planetId').value;
-  const name = document.getElementById('name').value.trim();
-  const system = document.getElementById('system').value.trim();
-  const climate = document.getElementById('climate').value.trim();
-  const population = parseInt(document.getElementById('population').value);
-
-  if (!name  !system  !climate  isNaN(population)  population < 0) {
-    alert('Proszę wypełnić wszystkie pola poprawnie!');
-    return;
+  const data = {
+    name: form.name.value,
+    system: form.system.value,
+    climate: form.climate.value,
+    population: parseInt(form.population.value),
+    surfaceType: form.surfaceType.value
+  };
+  if (editId) {
+    await fetch(`/api/planet/${editId}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+    editId = null;
+  } else {
+    await fetch("/api/planet", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
   }
+  form.reset();
+  fetchPlanets();
+};
 
-  const data = { name, system, climate, population };
-
-  try {
-    if(id) {
-      await fetch(`${api}/${id}`, {
-        method:'PUT',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(data)
-      });
-      showMessage('Planet updated!');
-    } else {
-      await fetch(api, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(data)
-      });
-      showMessage('Planet added!');
-    }
-    document.getElementById('planetId').value='';
-    form.reset();
-    loadPlanets();
-  } catch (err) {
-    alert('Błąd podczas zapisu danych: ' + err.message);
-  }
-});
-
-async function loadPlanets() {
-  try {
-    const res = await fetch(api);
-    const planets = await res.json();
-    table.innerHTML='';
-    planets.forEach(p => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${p.id}</td><td>${p.name}</td><td>${p.system}</td><td>${p.climate}</td><td>${p.population}</td>
-      <td><button onclick="edit(${p.id})">Edit</button> <button onclick="del(${p.id})">Delete</button></td>`;
-      table.appendChild(tr);
-    });
-  } catch (err) {
-    alert('Błąd podczas pobierania danych: ' + err.message);
-  }
+async function deletePlanet(id) {
+  await fetch(`/api/planet/${id}`, { method: "DELETE" });
+  fetchPlanets();
 }
 
-async function edit(id) {
-  try {
-    const res = await fetch(`${api}/${id}`);
-    const p = await res.json();
-    document.getElementById('planetId').value = p.id;
-    document.getElementById('name').value = p.name;
-    document.getElementById('system').value = p.system;
-    document.getElementById('climate').value = p.climate;
-    document.getElementById('population').value = p.population;
-  } catch (err) {
-    alert('Błąd podczas pobierania danych: ' + err.message);
-  }
-}
-
-async function del(id) {
-  try {
-    await fetch(`${api}/${id}`, { method:'DELETE' });
-    showMessage('Planet deleted!');
-    loadPlanets();
-  } catch (err) {
-    alert('Błąd podczas usuwania: ' + err.message);
-  }
-}
-
-loadPlanets();
+fetchPlanets();

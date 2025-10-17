@@ -1,8 +1,2 @@
-body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
-h1 { text-align: center; }
-form { display: flex; flex-direction: column; max-width: 400px; margin: 0 auto 20px; }
-input, button { margin: 5px 0; padding: 8px; }
-button { cursor: pointer; }
-ul { max-width: 600px; margin: 0 auto; padding: 0; list-style: none; }
-li { background: #fff; margin: 5px 0; padding: 10px; display: flex; justify-content: space-between; align-items: center; }
-button { margin-left: 5px; }
+body { font-family: Arial, sans-serif; padding: 20px; }
+form input, form button { margin: 5px; }

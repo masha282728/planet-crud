@@ -1,38 +1,22 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Planet CRUD</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planet CRUD</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Planet CRUD</h1>
-
-<form id="planetForm">
-  <input type="hidden" id="planetId">
-  <input type="text" id="name" placeholder="Name" required>
-  <input type="text" id="system" placeholder="System" required>
-  <input type="text" id="climate" placeholder="Climate" required>
-  <input type="number" id="population" placeholder="Population" required>
-  <button type="submit">Save</button>
-</form>
-
-<div id="message" style="margin-bottom:10px; color: green;"></div>
-
-<table id="planetTable">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>System</th>
-      <th>Climate</th>
-      <th>Population</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<script src="script.js"></script>
+  <h1>Planet CRUD</h1>
+  <form id="planetForm">
+    <input type="text" placeholder="Name" name="name" required>
+    <input type="text" placeholder="System" name="system" required>
+    <input type="text" placeholder="Climate" name="climate" required>
+    <input type="number" placeholder="Population" name="population" required>
+    <input type="text" placeholder="Surface Type" name="surfaceType" required>
+    <button type="submit">Add / Update Planet</button>
+  </form>
+  <ul id="planetList"></ul>
+  <script src="script.js"></script>
 </body>
 </html>

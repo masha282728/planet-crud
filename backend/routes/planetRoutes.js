@@ -1,8 +1,11 @@
-const router = require('express').Router();
-const c = require('../controllers/planetController');
-router.get('/', c.getAll);
-router.get('/:id', c.getOne);
-router.post('/', c.create);
-router.put('/:id', c.update);
-router.delete('/:id', c.delete);
+const express = require('express');
+const router = express.Router();
+const planetController = require('../controllers/planetController');
+
+router.get('/', planetController.getAll);
+router.get('/:id', planetController.getOne);
+router.post('/', planetController.create);
+router.put('/:id', planetController.update);
+router.delete('/:id', planetController.delete);
+
 module.exports = router;

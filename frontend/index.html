@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planet CRUD</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planets CRUD</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Planet CRUD</h1>
-  <form id="planetForm">
-    <input type="text" placeholder="Name" name="name" required>
-    <input type="text" placeholder="System" name="system" required>
-    <input type="text" placeholder="Climate" name="climate" required>
-    <input type="number" placeholder="Population" name="population" required>
-    <input type="text" placeholder="Surface Type" name="surfaceType" required>
-    <button type="submit">Add / Update Planet</button>
+  <h1>Planets</h1>
+  <div id="planet-list"></div>
+  <form id="planet-form">
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="text" name="system" placeholder="System" required />
+    <input type="text" name="climate" placeholder="Climate" required />
+    <input type="number" name="population" placeholder="Population" required />
+    <button type="submit">Add Planet</button>
   </form>
-  <ul id="planetList"></ul>
   <script src="script.js"></script>
 </body>
 </html>

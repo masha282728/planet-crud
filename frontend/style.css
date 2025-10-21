@@ -1,45 +1,127 @@
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 20px; 
-    background-color: #f9f9f9;
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 20px;
+  background: url('images/textur-gas-kvas-com-i51d-p-tekstura-fon-kosmos-1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2em;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 form {
-    margin-bottom: 20px;
-    background: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #ccc;
-}
-input, button {
-    margin: 5px;
-    padding: 7px;
-}
-button {
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 3px;
-}
-button:hover { 
-    background-color: #45a049; 
+  margin-bottom: 25px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0 0 5px #ccc;
+input, button {
+  margin: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  outline: none;
 }
+
+input {
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+  transition: 0.3s;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #4CAF50;
+}
+
+button {
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+#planetTable {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1s ease-in-out;
+}
+
 th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-tr:nth-child(even) { 
-    background-color: #f2f2f2; 
+
+th {
+  background-color: rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-tr:hover { 
-    background-color: #eee; 
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: 0.3s;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.edit-btn { background-color: #03a9f4; }
+.delete-btn { background-color: #f44336; }
+.edit-btn:hover { background-color: #0288d1; transform: scale(1.05); }
+.delete-btn:hover { background-color: #d32f2f; transform: scale(1.05); }
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
 }

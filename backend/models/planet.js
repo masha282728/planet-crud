@@ -1,16 +1,30 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: 'database.sqlite'
-});
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db');
 
 const Planet = sequelize.define('Planet', {
-  name: { type: DataTypes.STRING, allowNull: false },
-  system: { type: DataTypes.STRING, allowNull: false },
-  climate: { type: DataTypes.STRING, allowNull: false },
-  population: { type: DataTypes.INTEGER, allowNull: false }
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  system: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  climate: {
+    type: DataTypes.STRING
+  },
+  population: {
+    type: DataTypes.INTEGER
+  },
+  diameter: {
+    type: DataTypes.FLOAT,
+    allowNull: true
+  },
+  orbital_period: {
+    type: DataTypes.FLOAT,
+    allowNull: true
+  }
 });
 
-sequelize.sync();
-module.exports = { Planet, sequelize };
+module.exports = Planet;
 

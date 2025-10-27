@@ -13,8 +13,9 @@ exports.getOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { name, system, climate, population } = req.body;
-    const p = await Planet.create({ name, system, climate, population });
+    const { name, system, climate, population, diameter, orbital_period } = req.body;
+
+    const p = await Planet.create({ name, system, climate, population, diameter, orbital_period });
     res.status(201).json(p);
   } catch (e) {
     res.status(400).json({ error: e.message });

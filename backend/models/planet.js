@@ -4,27 +4,24 @@ const sequelize = require('../db');
 const Planet = sequelize.define('Planet', {
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   system: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   climate: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   },
   population: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   diameter: {
     type: DataTypes.FLOAT,
-    allowNull: true
   },
   orbital_period: {
     type: DataTypes.FLOAT,
-    allowNull: true
-  }
+  },
 });
 
-module.exports = Planet;
-
+module.exports = { Planet, sequelize };

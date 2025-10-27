@@ -1,21 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planets CRUD</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planets</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Planets</h1>
-  <div id="planet-list"></div>
+
   <form id="planet-form">
-    <input type="text" name="name" placeholder="Name" required />
-    <input type="text" name="system" placeholder="System" required />
-    <input type="text" name="climate" placeholder="Climate" required />
-    <input type="number" name="population" placeholder="Population" required />
-    <button type="submit">Add Planet</button>
+    <input id="name"         type="text"   placeholder="Name"        required />
+    <input id="system"       type="text"   placeholder="System"      required />
+    <input id="climate"      type="text"   placeholder="Climate"     />
+    <input id="population"   type="number" placeholder="Population"  />
+
+    <!-- nowe pola -->
+    <input id="diameter"        type="number" placeholder="Diameter (km)" />
+    <input id="orbital_period"  type="number" placeholder="Orbital period (days)" />
+
+    <button type="submit" id="submit-btn">Add Planet</button>
+    <button type="button" id="reset-btn">Reset</button>
   </form>
-  <script src="script.js"></script>
+
+  <table id="planets-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>System</th>
+        <th>Climate</th>
+        <th>Population</th>
+        <th>Diameter</th>
+        <th>Orbital period</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
+

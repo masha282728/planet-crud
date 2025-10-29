@@ -1,4 +1,4 @@
-const api = 'http://https://planet-crud-amber.vercel.app//api/planets';
+const api = 'http://https://planet-crud-amber.vercel.app/api/planets';
 const form = document.getElementById('planetForm');
 const table = document.querySelector('#planetTable tbody');
 

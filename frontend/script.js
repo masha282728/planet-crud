@@ -1,4 +1,4 @@
-const api = window.location.origin;
+const api = window.location.origin + "/api/planets";
 console.log("api", api)
 const form = document.getElementById('planetForm');
 const table = document.querySelector('#planetTable tbody');
